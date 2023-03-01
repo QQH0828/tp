@@ -15,6 +15,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Remark;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -29,6 +30,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String parentPhone;
+
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
@@ -113,9 +115,10 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
         }
         final Phone modelParentPhone = new Phone(parentPhone);
+        final Remark modelRemark = new Remark(""); //TODO: Implement parsing and marshalling in the storage commit.
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelParentPhone, modelTags);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelParentPhone, modelRemark, modelTags);
     }
 
 }
